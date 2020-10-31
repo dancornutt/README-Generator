@@ -1,1 +1,1 @@
-# README-Generator
+ username: dan cornutt email: dancornutt@gmail.com projectName: readme.md description: this project generates a readme file license: MIT dependenciesCmd: npm i testsCmd: npm test repoKnow: it is great repoContribute: do it!
