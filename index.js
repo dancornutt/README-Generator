@@ -116,44 +116,45 @@ function buildReadme(response) {
 intro:
 `# ${response.projectName}
 
-## Description #description
+## Description
 
 ${response.description}`,
 toc:
 `
-* [Description](#description)
-* [Installation](#installation)
-* [Usage](#usage)
-* [License](#license)
-* [Contributing](#contributing)
-* [Tests](#tests)
-* [Questions](#questions)
+Table of Contents:
+* [Description](##description)
+* [Installation](##installation)
+* [Usage](##usage)
+* [License](##license)
+* [Contributing](##contributing)
+* [Tests](##tests)
+* [Questions](##questions)
 `,
 install: 
-`## Installation #installation
+`## Installation
 
 to install necessary dependencies run the following command:
 ...
 ${response.dependenciesCmd}
 ...`,
 usage: 
-`## Usage #usage
+`## Usage
 
 ${response.repoKnow}`,
 license:
-`## License #license
+`## License
 
 This project is licensed under the ${licenses[response.license]} license.`,
 contributing:
-`## Contributing #contrubuting
+`## Contributing
 
 ${response.repoContribute}`,
 tests:
-`## Tests #tests
+`## Tests
 
 To run tests use command: ${response.testsCmd}`,
 questions:
-`## Questions #questions
+`## Questions
 
 Created by Github User: [${response.username}](https://github.com/${response.username}) who can be reached via email at: ${response.email}
 `
