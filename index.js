@@ -122,18 +122,18 @@ ${response.description}`,
 toc:
 `
 Table of Contents:
-* [Description](##description)
-* [Installation](##installation)
-* [Usage](##usage)
-* [License](##license)
-* [Contributing](##contributing)
-* [Tests](##tests)
-* [Questions](##questions)
+* [Description](#description)
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
 `,
 install: 
 `## Installation
 
-to install necessary dependencies run the following command:
+To install necessary dependencies run the following command:
 ...
 ${response.dependenciesCmd}
 ...`,
