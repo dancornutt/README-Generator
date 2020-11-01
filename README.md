@@ -1,8 +1,8 @@
-# README.md Generator!
+# this new prj [![License](https://img.shields.io/badge/License-BSD%203--Clause-orange.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 ## Description
 
-This projet automatically creates a README file based on user input from the command line.
+it's great
 
 Table of Contents:
 * [Description](#description)
@@ -21,17 +21,17 @@ npm i
 ...
 ## Usage
 
-This repo is in the initial stages of completion.
+it's great
 ## License
 
-This project is licensed under the [![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/) license.
+This project is licensed under the BSD license.
 ## Contributing
 
-Please reachout via GitHub for collaboration
+do it now
 ## Tests
 
 To run tests use command: npm test
 ## Questions
 
-Created by Github User: [dancornutt](https://github.com/dancornutt) who can be reached via email at: dacornutt@gmail.com
+Created by Github User: [dangithub](https://github.com/dangithub) who can be reached via email at: daEamil
 

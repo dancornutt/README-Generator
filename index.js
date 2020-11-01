@@ -1,7 +1,6 @@
 let inquirer = require("inquirer");
 let fs = require("fs");
 const fileName = "README.md";
-// let dataObj = {};
 
 //Common licenses for projects
 const licenses = {
@@ -10,7 +9,7 @@ const licenses = {
     "GNU": "[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)",
     "BSD": "[![License](https://img.shields.io/badge/License-BSD%203--Clause-orange.svg)](https://opensource.org/licenses/BSD-3-Clause)",
     "Creative Commons": "[![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/)",
-    "None": "None",
+    "None": "",
 };
 
 // array of questions for user
@@ -63,8 +62,6 @@ const questions = [
     },
 ];
 
-
-
 // function to write README file to disk
 function writeToFile(readmeObj) {
     let keys = Object.keys(readmeObj);
@@ -78,11 +75,6 @@ function writeToFile(readmeObj) {
         });
         
     });
-    // fs.appendFile(fileName, `${data}\n`, function(err) {
-    //     if (err){
-    //         return console.log(err)
-    //     };
-    // });
 }
 
 // function to initialize program
@@ -97,13 +89,6 @@ function init() {
     //Builds object of user responses
     inquirer.prompt(questions)
         .then( function(response) {
-            // fs.writeFile("README.md", stringMe(response), function(err) {
-            //     if (err){
-            //         return console.log(err)
-            //     };
-            //     console.log("success!")
-            // })
-            console.log("Finished asking user questions, response is :", response);
             buildReadme(response);
         })
         
@@ -111,10 +96,9 @@ function init() {
 
 //Generates readMeDoc Object
 function buildReadme(response) {
-    console.log("about to make doc, response is :", response);
     let doc = {
 intro:
-`# ${response.projectName}
+`# ${response.projectName} ${licenses[response.license]}
 
 ## Description
 
@@ -144,7 +128,7 @@ ${response.repoKnow}`,
 license:
 `## License
 
-This project is licensed under the ${licenses[response.license]} license.`,
+This project is licensed under the ${response.license} license.`,
 contributing:
 `## Contributing
 
@@ -161,12 +145,10 @@ Created by Github User: [${response.username}](https://github.com/${response.use
 };
 if (response.license === 'None'){
     doc.license = 
-`## License #license
+`## License
 
 This project has no license.`
     };
-    //write doc to disk
-    console.log("Finished makeing doc:", doc);
     writeToFile(doc);
 }
 
