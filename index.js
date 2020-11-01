@@ -1,5 +1,17 @@
 let inquirer = require("inquirer");
 let fs = require("fs");
+const fileName = "README.md";
+// let dataObj = {};
+
+//Common licenses for projects
+const licenses = {
+    "MIT": "[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)",
+    "Apache": "[![License](https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)",
+    "GNU": "[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)",
+    "BSD": "[![License](https://img.shields.io/badge/License-BSD%203--Clause-orange.svg)](https://opensource.org/licenses/BSD-3-Clause)",
+    "Creative Commons": "[![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/)",
+    "None": "None",
+};
 
 // array of questions for user
 const questions = [
@@ -27,10 +39,7 @@ const questions = [
         type: "list",
         message: "What kind of license should your project have?",
         name: "license",
-        choices: [
-            "MIT",
-            "None"
-        ]
+        choices: Object.keys(licenses)
     },
     {
         type: "input",
@@ -54,33 +63,111 @@ const questions = [
     },
 ];
 
-// function to write README file
-function writeToFile(fileName, data) {
+
+
+// function to write README file to disk
+function writeToFile(readmeObj) {
+    let keys = Object.keys(readmeObj);
+    keys.forEach(key => {
+        let section = readmeObj[`${key}`] + "\n";
+        console.log("Adding section:", section);
+        fs.appendFile(fileName, section, function(err) {
+            if (err){
+                return console.log(err)
+            };
+        });
+        
+    });
+    // fs.appendFile(fileName, `${data}\n`, function(err) {
+    //     if (err){
+    //         return console.log(err)
+    //     };
+    // });
 }
 
 // function to initialize program
 function init() {
-    // fs.writeFile("README.md");
+    //initializes readme file
+    fs.writeFile(fileName, "", function(err) {
+            if (err){
+                return console.log(err)
+            };
+        });
+
+    //Builds object of user responses
     inquirer.prompt(questions)
         .then( function(response) {
-            fs.writeFile("README.md", stringMe(response), function(err) {
-                if (err){
-                    return console.log(err)
-                };
-                console.log("success!")
-            })
+            // fs.writeFile("README.md", stringMe(response), function(err) {
+            //     if (err){
+            //         return console.log(err)
+            //     };
+            //     console.log("success!")
+            // })
+            console.log("Finished asking user questions, response is :", response);
+            buildReadme(response);
         })
+        
 }
 
-//Creates new line string for file
-function stringMe(data) {
-    let myStr = "";
-    for (let [key, value] of Object.entries(data)) {
-        myStr = `${myStr} ${key}: ${value}`;
-      }
-    myStr = `${myStr}\n`
-    return myStr;
-  }
+//Generates readMeDoc Object
+function buildReadme(response) {
+    console.log("about to make doc, response is :", response);
+    let doc = {
+intro:
+    `# ${response.projectName}
+
+    ## Description #description
+
+    ${response.description}`,
+toc:
+    `
+    * [Description](#description)
+    * [Installation](#installation)
+    * [Usage](#usage)
+    * [License](#license)
+    * [Contributing](#contributing)
+    * [Tests](#tests)
+    * [Questions](#questions)
+    `,
+install: 
+    `## Installation #installation
+
+    to install necessary dependencies run the following command:
+    ...
+    ${response.dependenciesCmd}
+    ...`,
+usage: 
+    `## Usage #usage
+
+    ${response.repoKnow}`,
+license:
+    `## License #license
+
+    This project is licensed under the ${licenses[response.license]} license.`,
+contributing:
+    `## Contributing #contrubuting
+    
+    ${response.repoContribute}`,
+tests:
+    `## Tests #tests
+    
+    To run tests use command: ${response.testsCmd}`,
+questions:
+    `## Questions #questions
+
+    Created by Github User: [${response.username}](https://github.com/${response.username}) who can be reached via email at: ${response.email}
+    `
+    };
+    if (response.license === 'None'){
+        doc.license = 
+    `## License #license
+
+    This project has no license.`
+    };
+    //write doc to disk
+    console.log("Finished makeing doc:", doc);
+    writeToFile(doc);
+}
 
 // function call to initialize program
 init();
