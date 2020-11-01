@@ -1,36 +1,37 @@
-# README Generator!
+# README.md Generator!
 
-## Description #description
+## Description
 
-This project makes readme.md files for you.
+This project will automatically create a README.md file for you from the command line.
 
-* [Description](#description)
-* [Installation](#installation)
-* [Usage](#usage)
-* [License](#license)
-* [Contributing](#contributing)
-* [Tests](#tests)
-* [Questions](#questions)
+Table of Contents:
+* [Description](##description)
+* [Installation](##installation)
+* [Usage](##usage)
+* [License](##license)
+* [Contributing](##contributing)
+* [Tests](##tests)
+* [Questions](##questions)
 
-## Usage #usage
-
-This repo needs contributors!
-## Installation #installation
+## Installation
 
 to install necessary dependencies run the following command:
 ...
 npm i
 ...
-## License #license
+## Usage
 
-This project is licensed under the [![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/) license.
-## Contributing #contrubuting
+This repo was created in a week and needs other collaborators!
+## License
 
-Do it do today!
-## Tests #tests
+This project is licensed under the [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0) license.
+## Contributing
+
+Please contact via GitHub
+## Tests
 
 To run tests use command: npm test
-## Questions #questions
+## Questions
 
-Created by Github User: [dancornutt](https://github.com/dancornutt) who can be reached via email at: dacornutt@gmail.com
+Created by Github User: [dancornutt](https://github.com/dancornutt) who can be reached via email at: dancornutt@gmail.com
 
