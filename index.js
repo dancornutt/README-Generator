@@ -114,55 +114,55 @@ function buildReadme(response) {
     console.log("about to make doc, response is :", response);
     let doc = {
 intro:
-    `# ${response.projectName}
+`# ${response.projectName}
 
-    ## Description #description
+## Description #description
 
-    ${response.description}`,
+${response.description}`,
 toc:
-    `
-    * [Description](#description)
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [License](#license)
-    * [Contributing](#contributing)
-    * [Tests](#tests)
-    * [Questions](#questions)
-    `,
+`
+* [Description](#description)
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
+`,
 install: 
-    `## Installation #installation
+`## Installation #installation
 
-    to install necessary dependencies run the following command:
-    ...
-    ${response.dependenciesCmd}
-    ...`,
+to install necessary dependencies run the following command:
+...
+${response.dependenciesCmd}
+...`,
 usage: 
-    `## Usage #usage
+`## Usage #usage
 
-    ${response.repoKnow}`,
+${response.repoKnow}`,
 license:
-    `## License #license
+`## License #license
 
-    This project is licensed under the ${licenses[response.license]} license.`,
+This project is licensed under the ${licenses[response.license]} license.`,
 contributing:
-    `## Contributing #contrubuting
-    
-    ${response.repoContribute}`,
+`## Contributing #contrubuting
+
+${response.repoContribute}`,
 tests:
-    `## Tests #tests
-    
-    To run tests use command: ${response.testsCmd}`,
+`## Tests #tests
+
+To run tests use command: ${response.testsCmd}`,
 questions:
-    `## Questions #questions
+`## Questions #questions
 
-    Created by Github User: [${response.username}](https://github.com/${response.username}) who can be reached via email at: ${response.email}
-    `
-    };
-    if (response.license === 'None'){
-        doc.license = 
-    `## License #license
+Created by Github User: [${response.username}](https://github.com/${response.username}) who can be reached via email at: ${response.email}
+`
+};
+if (response.license === 'None'){
+    doc.license = 
+`## License #license
 
-    This project has no license.`
+This project has no license.`
     };
     //write doc to disk
     console.log("Finished makeing doc:", doc);
